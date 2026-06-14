@@ -1,0 +1,24 @@
+title: Ransomware File Extension Detection
+id: 002
+status: experimental
+description: Detects suspicious ransomware-related file extensions associated with WannaCry behavior
+author: Mudit Sharma
+date: 2026-06-12
+
+logsource:
+  category: file_event
+  product: windows
+
+detection:
+  selection:
+    TargetFilename|contains:
+      - '.WNCRY'
+      - '.WNRY'
+  condition: selection
+
+level: critical
+
+tags:
+  - attack.t1486
+  - attack.impact
+  - attack.ransomware
